@@ -1,0 +1,207 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Landscapes</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+    <link rel="manifest" href="../img/site.webmanifest">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">    </script>
+    <script type="text/javascript">
+
+        function display_c() {
+            var refresh = 1000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct()', refresh)
+        }
+
+        function display_ct() {
+            var x = new Date()
+            // date part ///
+
+            // time part //
+            var hour = x.getHours();
+            var minute = x.getMinutes();
+            var second = x.getSeconds();
+            if (hour < 10) { hour = '0' + hour; }
+            if (minute < 10) { minute = '0' + minute; }
+            if (second < 10) { second = '0' + second; }
+            var x3 = hour + ':' + minute + ':' + second
+            document.getElementById('ct').innerHTML = x3;
+            display_c();
+        }
+
+
+        function dateee() {
+            var d = new Date()
+
+            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            var datefull = d.getDate() + "/" + " "
+            var datecall = "st"
+
+            if (d.getDate() == 1) {
+                datecall = "st"
+            } else if (d.getDate() == 2) {
+                datecall = "nd"
+            } else if (d.getDate() == 3) {
+                datecall = "rd"
+            } else {
+                datecall = "th"
+            }
+
+
+
+
+
+
+
+
+
+            var outpute = days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + datecall + ", " + d.getFullYear();
+
+            console.log(outpute)
+
+            document.getElementById('p1').innerHTML = outpute;
+
+
+
+
+
+        }
+
+
+        function wallpaperset() {
+            var dd = new Date()
+            console.log(dd.getHours())
+            var wallpapertime = 0 // 1 = sunrise 2 = noon = 3 sunset 4 = night 
+            var aaa = dd.getHours()
+            console.log(aaa)
+            if (aaa == 0) {
+                wallpapertime = 4
+            } else if (aaa == 1) {
+                wallpapertime = 4
+
+            } else if (aaa == 2) {
+                wallpapertime = 4
+
+            } else if (aaa == 3) {
+                wallpapertime = 4
+
+            } else if (aaa == 4) {
+                wallpapertime = 4
+
+            } else if (aaa == 5) {
+                wallpapertime = 4
+
+            } else if (aaa == 6) {
+                wallpapertime = 4
+
+            } else if (aaa == 7) {
+                wallpapertime = 1
+
+            } else if (aaa == 8) {
+                wallpapertime = 1
+
+            } else if (aaa == 9) {
+                wallpapertime = 2
+
+            } else if (aaa == 10) {
+                wallpapertime = 2
+
+            } else if (aaa == 11) {
+                wallpapertime = 2
+
+            } else if (aaa == 12) {
+                wallpapertime = 2
+
+            } else if (aaa == 13) {
+                wallpapertime = 2
+
+            } else if (aaa == 14) {
+                wallpapertime = 2
+
+            } else if (aaa == 15) {
+                wallpapertime = 2
+
+            } else if (aaa == 16) {
+                wallpapertime = 2
+
+            } else if (aaa == 17) {
+                wallpapertime = 2
+
+            } else if (aaa == 18) {
+                wallpapertime = 2
+
+            } else if (aaa == 19) {
+                wallpapertime = 3
+
+            } else if (aaa == 20) {
+                wallpapertime = 3
+
+            } else if (aaa == 21) {
+                wallpapertime = 4
+
+            } else if (aaa == 22) {
+                wallpapertime = 4
+
+            } else if (aaa == 23) {
+                wallpapertime = 4
+
+            } else {
+                console.warn('Couldn\'t find any hour to set the wallpaper to.')
+            }
+
+            // 1 = sunrise 2 = noon = 3 sunset 4 = night 
+
+            if (wallpapertime == 1) {
+                document.body.style.backgroundImage = "url('../img/1.jpg')";
+                console.log('sunrise')
+            } else if (wallpapertime == 2) {
+                document.body.style.backgroundImage = "url('../img/2.jpg')";
+                console.log('noon')
+                document.getElementById("imgdesc").innerHTML = "Image from unsplash"
+                document.getElementById("imgdesc").href = "https://unsplash.com"
+
+            } else if (wallpapertime == 3) {
+                document.body.style.backgroundImage = "url('../img/3.jpg')";
+                console.log('sunset')
+                document.getElementById("imgdesc").innerHTML = "Original Image"
+                document.getElementById("imgdesc").href = "https://kiranpl.com"
+            } else if (wallpapertime == 4) {
+                document.body.style.backgroundImage = "url('../img/4.jpg')";
+                console.log('night')
+                document.getElementById("imgdesc").innerHTML = "Image from unsplash"
+                document.getElementById("imgdesc").href = "https://unsplash.com"
+
+            }
+
+
+
+        }
+
+
+        var intervalId = window.setInterval(function () {
+            display_ct()
+            dateee()
+            wallpaperset()
+        }, 1000);
+
+    </script>
+</head>
+
+
+
+<body onload=display_ct();dateee();wallpaperset();>
+    <div class="divv">
+        <span class="timee" id='ct'></span>
+        <p class="datee" id='p1'>Error Loading Date.</p>
+
+    </div>
+    <div class="creditdiv credit">
+        <a href="#" class="credit" id="imgdesc">Loading...</a>
+    </div>
+</body>
+
+</html>
