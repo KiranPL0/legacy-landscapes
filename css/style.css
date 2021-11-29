@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+    text-align: center;
+ }
+
+
+ .timee{
+     color: #ffffff;
+     font-family: 'Arimo', sans-serif;
+    text-align: center;
+    font-size: 70px;
+    margin-top: 20%;
+
+
+ }
+
+ .datee{
+    font-family: 'Open Sans', sans-serif;
+   color: #ffffff;
+   font-size: 20px;    
+   text-align: center;      
+ }
+
+ .divv{
+    margin-top: 20%;
+    text-align: center;
+
+ }
+
+.credit{
+   font-family: 'Open Sans', sans-serif;
+   padding-bottom: 0%;
+   padding-top: 1.5%;
+   color: inherit;
+   text-decoration: inherit;
+ 
+}
+
+.creditdiv{
+   position: absolute;
+   bottom: 30px;
+   border-radius: 20px;
+   background-color: white;
+   height: 5%;
+   width: 20%;
+   text-align: center;
+   font-size: larger;
+}
