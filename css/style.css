@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
+
+
 body {
     background-repeat: no-repeat;
     background-attachment: fixed; 
@@ -51,4 +53,20 @@ body {
    width: 20%;
    text-align: center;
    font-size: larger;
+   left: var(--bottomelementpadding);
+}
+.fullscreendiv{
+   position: absolute;
+   bottom: 30px;
+   border-radius: 20px;
+   background-color: white;
+   height: 5%;
+   width: 20%;
+   text-align: center;
+   font-size: larger;
+   right: var(--bottomelementpadding);
+}
+
+:root {
+   --bottomelementpadding: 30px;
 }

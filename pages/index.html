@@ -10,6 +10,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">    </script>
     <script type="text/javascript">
 
+        var elem = document.documentElement;
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+        }
+
+
         function display_c() {
             var refresh = 1000; // Refresh rate in milli seconds
             mytime = setTimeout('display_ct()', refresh)
@@ -61,7 +83,6 @@
 
             var outpute = days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + datecall + ", " + d.getFullYear();
 
-            console.log(outpute)
 
             document.getElementById('p1').innerHTML = outpute;
 
@@ -74,10 +95,8 @@
 
         function wallpaperset() {
             var dd = new Date()
-            console.log(dd.getHours())
             var wallpapertime = 0 // 1 = sunrise 2 = noon = 3 sunset 4 = night 
             var aaa = dd.getHours()
-            console.log(aaa)
             if (aaa == 0) {
                 wallpapertime = 4
             } else if (aaa == 1) {
@@ -157,23 +176,31 @@
 
             if (wallpapertime == 1) {
                 document.body.style.backgroundImage = "url('../img/1.jpg')";
-                console.log('sunrise')
+                document.getElementById("imgdesc").innerHTML = "Image from Unsplash"
+                document.getElementById("imgdesc").href = "https://unsplash.com"
+                document.getElementById("p1").style.color = "#000000"
+                document.getElementById("ct").style.color = "#000000"
             } else if (wallpapertime == 2) {
                 document.body.style.backgroundImage = "url('../img/2.jpg')";
-                console.log('noon')
-                document.getElementById("imgdesc").innerHTML = "Image from unsplash"
+                document.getElementById("imgdesc").innerHTML = "Image from Unsplash"
                 document.getElementById("imgdesc").href = "https://unsplash.com"
+                document.getElementById("p1").style.color = "#FFFFFF"
+                document.getElementById("ct").style.color = "#FFFFFF"
+
 
             } else if (wallpapertime == 3) {
                 document.body.style.backgroundImage = "url('../img/3.jpg')";
-                console.log('sunset')
-                document.getElementById("imgdesc").innerHTML = "Original Image"
+                document.getElementById("imgdesc").innerHTML = "Image from Unsplash"
                 document.getElementById("imgdesc").href = "https://kiranpl.com"
+                document.getElementById("p1").style.color = "#FFFFFF"
+                document.getElementById("ct").style.color = "#FFFFFF"
+
             } else if (wallpapertime == 4) {
                 document.body.style.backgroundImage = "url('../img/4.jpg')";
-                console.log('night')
-                document.getElementById("imgdesc").innerHTML = "Image from unsplash"
+                document.getElementById("imgdesc").innerHTML = "Image from Unsplash"
                 document.getElementById("imgdesc").href = "https://unsplash.com"
+                document.getElementById("p1").style.color = "#FFFFFF"
+                document.getElementById("ct").style.color = "#FFFFFF"
 
             }
 
@@ -188,12 +215,34 @@
             wallpaperset()
         }, 1000);
 
+        var isFullscreenEnabled = false
+        var btn = undefined
+        function load() {
+            btn = document.getElementById("fullscreenbtn")
+            btn.innerText = "Enter Fullscreen"
+
+        }
+        function updateFullscreen() {
+            if (isFullscreenEnabled == true) {
+                closeFullscreen()
+                isFullscreenEnabled = false
+                btn.innerText = "Enter Fullscreen"
+                $("body").load(location.href);
+                wallpaperset()
+            } else {
+                openFullscreen()
+                isFullscreenEnabled = true
+                btn.innerText = "Exit Fullscreen"
+                $("body").load(location.href);
+                wallpaperset()
+            }
+        }
     </script>
 </head>
 
 
 
-<body onload=display_ct();dateee();wallpaperset();>
+<body onload=display_ct();dateee();wallpaperset();load();>
     <div class="divv">
         <span class="timee" id='ct'></span>
         <p class="datee" id='p1'>Error Loading Date.</p>
@@ -202,6 +251,10 @@
     <div class="creditdiv credit">
         <a href="#" class="credit" id="imgdesc">Loading...</a>
     </div>
+    <div class="fullscreendiv credit">
+        <a href="javascript:updateFullscreen();" class="credit" id="fullscreenbtn">Loading...</a>
+    </div>
+
 </body>
 
 </html>
